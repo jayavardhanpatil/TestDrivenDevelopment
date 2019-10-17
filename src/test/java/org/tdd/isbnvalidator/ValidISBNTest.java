@@ -14,7 +14,6 @@ public class ValidISBNTest {
         assertTrue("First Value ",result);
         result = validator.checkISBN("1484240774");
         assertTrue("Second value ", result);
-
     }
 
     @Test
@@ -28,6 +27,19 @@ public class ValidISBNTest {
     public void nineDigitISBNValidation(){
         ValidateISBN validator = new ValidateISBN();
         boolean result = validator.checkISBN("020163361");
-
     }
+
+    @Test(expected = NumberFormatException.class)
+    public void nonNumericISBNCheck(){
+        ValidateISBN validator = new ValidateISBN();
+        boolean result = validator.checkISBN("HelloWorld");
+    }
+
+    @Test
+    public void ISBNEndingWithXisValid(){
+        ValidateISBN validator = new ValidateISBN();
+        boolean result = validator.checkISBN("012000030X");
+        assertTrue("ISBN Ending with X ",result);
+    }
+
 }

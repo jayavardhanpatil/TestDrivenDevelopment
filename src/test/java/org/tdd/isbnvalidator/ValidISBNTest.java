@@ -17,9 +17,23 @@ public class ValidISBNTest {
     }
 
     @Test
-    public void checkInValidISBN(){
+    public void check13DigitINSB(){
+        ValidateISBN validator = new ValidateISBN();
+        boolean result = validator.checkISBN("9780984782857");
+        assertTrue("13 digit ISBN ",result);
+    }
+
+    @Test
+    public void check10DigitInValidISBN(){
         ValidateISBN validator = new ValidateISBN();
         boolean result = validator.checkISBN("0201633613");
+        assertFalse(result);
+    }
+
+    @Test
+    public void check13DigitInValidISBN(){
+        ValidateISBN validator = new ValidateISBN();
+        boolean result = validator.checkISBN("9780984782856");
         assertFalse(result);
     }
 
@@ -36,7 +50,7 @@ public class ValidISBNTest {
     }
 
     @Test
-    public void ISBNEndingWithXisValid(){
+    public void tenDigitISBNEndingWithXisValid(){
         ValidateISBN validator = new ValidateISBN();
         boolean result = validator.checkISBN("012000030X");
         assertTrue("ISBN Ending with X ",result);

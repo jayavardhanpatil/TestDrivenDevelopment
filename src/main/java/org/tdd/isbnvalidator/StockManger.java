@@ -18,8 +18,8 @@ public class StockManger {
 
 
     public String getLocatorCode(String isbn){
-        Book book = webService.lookup(isbn);
-        if (book == null) book = dataBaseService.lookup(isbn);
+        Book book = dataBaseService.lookup(isbn);
+        if (book == null) book = webService.lookup(isbn);
 
         StringBuilder locator = new StringBuilder();
         locator.append(isbn.substring(isbn.length() - 4)).append(book.getAuthor().substring(0,1))

@@ -7,22 +7,23 @@ public class NumberValidatorTest {
 	@Test
 	public void checkPrimeNumbers()
 	{
-		
-		Integer numbers[] = {1,15,23,25,60,61,63,79,207};
-		NumberValidator validator = new NumberValidator();
-		
-		for (int i = 0; i < numbers.length; i++) {
-			boolean isPrime = true;
-			int maxDivisor = (int)Math.sqrt(numbers[i]); 
-			for(int counter =2;counter < maxDivisor; counter ++) {
-		        if(numbers[i] % counter ==0)
-		        	isPrime = false;
-		    }
-				
-		assertEquals(isPrime, validator.isItPrime(numbers[i]));
-		
+		Integer numbers[] = {1,7, 13};
+		NumberValidator numberValidator = new NumberValidator();
+
+		for(int i : numbers){
+			assertEquals(true, numberValidator.isItPrime(i));
 		}
-		
+	}
+
+	@Test
+	public void checkNonPrimeNumbers()
+	{
+		Integer numbers[] = {6, 4, 8, 12, 25};
+		NumberValidator numberValidator = new NumberValidator();
+
+		for(int i : numbers){
+			assertEquals(false, numberValidator.isItPrime(i));
+		}
 	}
 
 }
